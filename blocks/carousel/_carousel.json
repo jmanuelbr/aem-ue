@@ -1,0 +1,191 @@
+{
+  "definitions": [
+    {
+      "title": "Carousel",
+      "id": "carousel",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Carousel",
+              "model": "carousel",
+              "filter": "carousel",
+              "classes_layout": "slides-1",
+              "classes_style": "split",
+              "classes_navigation": "nav-arrows-dots",
+              "classes_autoplay": "autoplay-off",
+              "classes_transition": "transition-slide",
+              "classes_theme": "theme-light"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Carousel Slide",
+      "id": "carousel-slide",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Slide",
+              "model": "carousel-slide",
+              "content_text": "<h3>Slide title</h3><p>Slide description.</p>"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "carousel",
+      "fields": [
+        {
+          "component": "select",
+          "name": "classes_layout",
+          "value": "slides-1",
+          "label": "Slides visible at once (desktop)",
+          "description": "Mobile always shows one slide. Tablet shows up to two.",
+          "valueType": "string",
+          "options": [
+            { "name": "One", "value": "slides-1" },
+            { "name": "Two", "value": "slides-2" },
+            { "name": "Three", "value": "slides-3" }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "classes_style",
+          "value": "split",
+          "label": "Slide style",
+          "valueType": "string",
+          "options": [
+            { "name": "Image beside text", "value": "split" },
+            { "name": "Image above text (card)", "value": "stacked" },
+            { "name": "Text over image", "value": "overlay" }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "classes_navigation",
+          "value": "nav-arrows-dots",
+          "label": "Navigation",
+          "valueType": "string",
+          "options": [
+            { "name": "Arrows and dots", "value": "nav-arrows-dots" },
+            { "name": "Arrows and thumbnails", "value": "nav-thumbnails" },
+            { "name": "Arrows only", "value": "nav-arrows" },
+            { "name": "Dots only", "value": "nav-dots" }
+          ]
+        },
+        {
+          "component": "boolean",
+          "name": "classes_counter",
+          "label": "Show slide counter (e.g. 3 / 10)",
+          "valueType": "boolean"
+        },
+        {
+          "component": "select",
+          "name": "classes_autoplay",
+          "value": "autoplay-off",
+          "label": "Autoplay",
+          "description": "Autoplay pauses on hover and focus, is disabled for users who prefer reduced motion and always includes a pause button.",
+          "valueType": "string",
+          "options": [
+            { "name": "Off", "value": "autoplay-off" },
+            { "name": "Every 4 seconds", "value": "autoplay-4" },
+            { "name": "Every 6 seconds", "value": "autoplay-6" },
+            { "name": "Every 10 seconds", "value": "autoplay-10" }
+          ]
+        },
+        {
+          "component": "boolean",
+          "name": "classes_loop",
+          "label": "Loop (go back to the first slide after the last one)",
+          "valueType": "boolean"
+        },
+        {
+          "component": "select",
+          "name": "classes_transition",
+          "value": "transition-slide",
+          "label": "Transition",
+          "description": "Fade only applies when one slide is visible at once.",
+          "valueType": "string",
+          "options": [
+            { "name": "Slide", "value": "transition-slide" },
+            { "name": "Fade", "value": "transition-fade" }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "classes_theme",
+          "value": "theme-light",
+          "label": "Color theme",
+          "valueType": "string",
+          "options": [
+            { "name": "Light", "value": "theme-light" },
+            { "name": "Dark", "value": "theme-dark" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carousel-slide",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image alt text",
+          "description": "Describe the image for screen reader users. Leave empty only for purely decorative images."
+        },
+        {
+          "component": "richtext",
+          "name": "content_text",
+          "value": "",
+          "label": "Text",
+          "description": "Start with a heading for the slide title, then add details and description.",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "content_cta",
+          "label": "Call to action link",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "content_ctaText",
+          "label": "Call to action label",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "credit",
+          "value": "",
+          "label": "Image credit",
+          "description": "Photographer, source and license. Shown with the image.",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "carousel",
+      "components": [
+        "carousel-slide"
+      ]
+    }
+  ]
+}
